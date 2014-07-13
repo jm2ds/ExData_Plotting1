@@ -23,6 +23,9 @@ setnames(hpcData, c(1:9), c("Date", "Time", "Global_active_power", "Global_react
 #combine date and time
 DateTime <- strptime(paste(hpcData$Date, hpcData$Time), "%d/%m/%Y %H:%M")
 
+#opening device to write to a PNG file, default is 480 x 480
+png(file = "plot2.png")
+
 #setting additional formating parameters for graph
 par(mfrow = c(1,1), 
     mar= c(4, 4, 2, 2),
@@ -34,9 +37,6 @@ plot(DateTime, hpcData$Global_active_power,
               type = "l",
               xlab = "",        
               ylab = "Global Active Power (kilowatts)")
-
-#copying graph to a PNG file, default is 480 x 480
-dev.copy(png, file = "plot2.png")
 
 #closing device
 dev.off()    

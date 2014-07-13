@@ -23,13 +23,12 @@ setnames(hpcData, c(1:9), c("Date", "Time", "Global_active_power", "Global_react
 
 #combine date and time
 DateTime <- strptime(paste(hpcData$Date, hpcData$Time), "%d/%m/%Y %H:%M")
+
 #opening device to write to a PNG file, default is 480 x 480
 png(file = "plot4.png")
 
 #setting additional formating parameters
-par(mfrow = c(2,2), 
-    mar= c(4, 4, 2, 2),
-    oma = c(1, 1, 1, 1),
+par(mfrow = c(2,2),
     cex = .8,
     bg = "transparent")  #examples are transparent but some systems default to white (like mine)
 
@@ -38,7 +37,7 @@ par(mfrow = c(2,2),
 plot(DateTime, hpcData$Global_active_power,
      type = "l",
      xlab = "",        
-     ylab = "Global Active Power (kilowatts)")
+     ylab = "Global Active Power")
 
 #graph 2
 
@@ -59,7 +58,7 @@ points(DateTime, hpcData$Sub_metering_1, type = "l")
 points(DateTime, hpcData$Sub_metering_2, type = "l", col = "red")
 points(DateTime, hpcData$Sub_metering_3, type = "l", col = "blue")
 
-legend("topright", lty = c(1, 1, 1), bty = "n", cex = .75, col = c("black", "red", "blue"),
+legend("topright", lty = c(1, 1, 1), bty = "n", cex = .9, col = c("black", "red", "blue"),
        legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 
 #graph 4

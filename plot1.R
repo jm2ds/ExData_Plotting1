@@ -20,6 +20,9 @@ setnames(hpcData, c(1:9), c("Date", "Time", "Global_active_power", "Global_react
                          "Voltage", "Global_intensity", "Sub_metering_1", "Sub_metering_2",
                          "Sub_metering_3"))
 
+#opening device to write to a PNG file, default is 480 x 480
+png(file = "plot1.png")
+
 #setting additional formating parameters for graph
 par(mfrow = c(1,1), 
     mar= c(4, 4, 2, 2),
@@ -30,10 +33,7 @@ par(mfrow = c(1,1),
 hist(hpcData$Global_active_power, xlab = "Global Active Power (kilowatts)", 
      main = "Global Active Power", 
      col = "red",
-     breaks=15)
-
-#copying graph to a .png file, default is 480 x 480
-dev.copy(png, file = "plot1.png")
+     breaks = 12)
 
 #closing device
 dev.off()
